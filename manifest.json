@@ -1,0 +1,35 @@
+{   
+	"manifest_version": 2, 
+	"name": "Search TPB",   
+	"version": "1.0",   
+	"description": "Search TPB from the context menu.",
+	"permissions": [
+		"contextMenus",
+		"tabs",
+		"http://*.thepiratebay.se/",
+		"http://thepiratebay.se/",
+		"http://www.google.com.au/",
+		"https://www.google.com.au/",
+		"https://*/*",
+		"http://*/*"
+	],   
+	"icons": {
+		"16": "icon.png",
+		"48": "icon.png",
+		"128": "icon.png"
+	},
+	"browser_action": {     
+		"default_icon": "icon.png",  
+		"default_popup": "popup.html"   
+	},
+	"background": {
+		"scripts": ["jquery-1.9.1.min.js", "doTheWork.js"]
+  		//"page": "doTheWork.html"
+  		//"persistent": false // for efficiency
+  	}
+   // "content_scripts": [
+   //  {
+   //  	"matches": ["http://*/*"],
+   //   	"js": ["jquery-1.9.1.min.js", '']
+   //  }]
+} 
