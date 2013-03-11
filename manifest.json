@@ -23,13 +23,8 @@
 		"default_popup": "popup.html"   
 	},
 	"background": {
-		"scripts": ["jquery-1.9.1.min.js", "doTheWork.js"]
-  		//"page": "doTheWork.html"
+		"scripts": ["jquery-1.9.1.min.js", "doTheWork.js"],
+		 "matches": ["http://*/*", "https://*/*"]
   		//"persistent": false // for efficiency
   	}
-   // "content_scripts": [
-   //  {
-   //  	"matches": ["http://*/*"],
-   //   	"js": ["jquery-1.9.1.min.js", '']
-   //  }]
 } 
