@@ -28,21 +28,17 @@ chrome.extension.onMessage.addListener(
         switch (request.directive) {
         case 'page-clicked':
             // execute the content script
-            console.log(request.selectedText);
+            //console.log(request.selectedText);
            	if((request.selectedText.length <= 0)||(lastSearchTerm === request.selectedText)){
            		// don't bother doing anything if they didn't select nothing special
            		return;
            	}
            	lastSearchTerm = request.selectedText;
-      			var title = "Search TPB for '" + request.selectedText + "'";
-      			chrome.contextMenus.removeAll(function(){});
-      			parentId = chrome.contextMenus.create({"title": title, "contexts":["selection"], "onclick": function() { genericOnClick(request.selectedText); }});
-      			loadingId = chrome.contextMenus.create({'title': 'Loading... try again.', 'parentId': parentId, 'contexts':['selection'], 'onclick': function() { alert("TPB haven't told me what they have yet. Try giving it another click.... NOW!"); }});
 
       			var searchUrl = 'http://thepiratebay.se/search/' + encodeURIComponent(request.selectedText) + '/0/7/0'
 
       			var xhr = new XMLHttpRequest();
-      			xhr.open('GET', searchUrl, false);
+      			xhr.open('GET', searchUrl, true);
       			xhr.onreadystatechange = function() {
       				if (xhr.readyState == 4) {
                 // Get rid of the menu item claiming we're loading (because we have a response now)
@@ -68,8 +64,13 @@ chrome.extension.onMessage.addListener(
       				}
       			}
       			xhr.send();
-
             sendResponse({}); // sending back empty response to sender
+
+            var title = "Search TPB for '" + request.selectedText + "'";
+            chrome.contextMenus.removeAll(function(){});
+            parentId = chrome.contextMenus.create({"title": title, "contexts":["selection"], "onclick": function() { genericOnClick(request.selectedText); }});
+            loadingId = chrome.contextMenus.create({'title': 'Loading... try again.', 'parentId': parentId, 'contexts':['selection'], 'onclick': function() { alert("TPB haven't told me what they have yet. Try giving it another click.... NOW!"); }});
+
             break;
         default:
             // helps debug when request directive doesn't match
@@ -84,11 +85,11 @@ chrome.tabs.onUpdated.addListener(function(tab) {
 		allFrames: false // When true, this injects script into iframes in the page and doesn't work before 4.0.266.0. We actually don't want this here.
 	});
 
-	console.log('Script injected');
+	//console.log('Script injected');
 });
 
 
 chrome.tabs.onCreated.addListener(function(tab) {
-	console.log('tab created');
+	//console.log('tab created');
 });
 
