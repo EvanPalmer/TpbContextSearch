@@ -1,6 +1,6 @@
 {   
 	"manifest_version": 2, 
-	"name": "Search TPB",   
+	"name": "Context Search TPB",   
 	"version": "1.0",   
 	"description": "Search TPB from the context menu.",
 	"permissions": [
@@ -26,5 +26,12 @@
 		"scripts": ["jquery-1.9.1.min.js", "doTheWork.js"],
 		 "matches": ["http://*/*", "https://*/*"]
   		//"persistent": false // for efficiency
-  	}
+  	},
+  	"content_scripts": [
+    {
+ 	  "matches": ["http://*/*", "https://*/*"],
+      "css": ["bootstrap/css/bootstrap.css"], // this doesn't need to be injected on every page
+      "js": ["jquery-1.9.1.min.js", "contentscript.js"]
+    }
+  ]
 } 
