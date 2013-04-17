@@ -85,6 +85,12 @@ chrome.extension.onMessage.addListener(
     }
 );
 
+chrome.tabs.onUpdated.addListener(function(tab) {
+  chrome.tabs.executeScript(tab.id, { // defaults to the current tab
+    file: 'contentscript_imdb.js', // script to inject into page and run in sandbox
+    allFrames: false // When true, this injects script into iframes in the page and doesn't work before 4.0.266.0. We actually don't want this here.
+  });
+});
 // // IMPORTANT!!!
 // // THIS IS HOW WE CAN PROGRAMMATICALLY ADD CONTENT SCRIPTS TO PAGES
 // // WILL NEED TO DO THIS FOR IMDB ETC
