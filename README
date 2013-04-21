@@ -1,3 +1,5 @@
 This is a project to extend Chrome to be able to do a quick search for a torrent on The Pirate Bay.
 
+It integrates nicely with IMDB and future releases will integrate with other websites.
+
 It's my first extension.
