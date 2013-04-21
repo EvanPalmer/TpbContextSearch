@@ -1,8 +1,8 @@
 {   
 	"manifest_version": 2, 
-	"name": "TPB Integrated Pirate Bay Search",   
-	"version": "1.1.4",   
-	"description": "Search TPB from the context menu.",
+	"name": "TPB Integrated Pirate Bay Search",
+	"version": "1.1.5",
+	"description": "Search TPB from the context menu - and stuff like that.",
 	"permissions": [
 		"contextMenus",
 		"tabs",

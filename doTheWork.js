@@ -1,18 +1,15 @@
 // TODO:
 // WATCH THESE VIDEOS
 //    http://www.youtube.com/watch?v=B4M_a7xejYI&list=ECCA101D6A85FE9D4B
+// should make the search a jQuery plug in.
+// add Rotten Tomatos and Wikipedia
 // Could use Url Filter to do something to IMDB http://developer.chrome.com/extensions/events.html#type-UrlFilter (parse when the dom is loaded)
 // Clean up folder structure, and remove unused files
 // Sometimes it stops working - the search term doesn't update and the onclick on the" Search TBP for XXX" does nothing
 // What happens when you don't have uTorrent installed?
 // How to add preferences?? Like, prefer HQ, prefer most recent, exclude XXX, 
-// Give the files better names.
-// sanitise input!!! Like, remove weird characters that might break the search
 // It would be cool if I could rename it, so it downloaded with the name of the movie and the year etc
-// add bootstrap JS from CDN
 // add an options page - so we can remove XXX content
-// fix background tab bug
-
 
 function genericOnClick(searchText) {
 	var searchUrl = 'http://thepiratebay.se/search/' + encodeURIComponent(searchText) + '/0/7/0'

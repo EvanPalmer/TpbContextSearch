@@ -10,9 +10,17 @@
 				if(thisIsAMoviePage){
 					var container = $('#prometer_container');
 					debugger;
+					var searchTerm = sanitizeSearchTerm($('h1.header').text());
+
+					if(container == undefined || container.length === 0){
+						// this is if it's a TV series.
+						container = $('#warplink').parent();
+						container.css('float', 'right');
+						var searchTerm = sanitizeSearchTerm($('h1.header .itemprop').text());
+					}
+
 					// make room for the new DDL
 					container.css('left', '-10px').children().remove();
-					var searchTerm = sanitizeSearchTerm($('h1.header').text());
 					doSearch(container, searchTerm);
 				}
 
