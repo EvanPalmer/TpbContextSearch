@@ -11,6 +11,8 @@
 // It would be cool if I could rename it, so it downloaded with the name of the movie and the year etc
 // add bootstrap JS from CDN
 // add an options page - so we can remove XXX content
+// fix background tab bug
+
 
 function genericOnClick(searchText) {
 	var searchUrl = 'http://thepiratebay.se/search/' + encodeURIComponent(searchText) + '/0/7/0'
@@ -91,6 +93,14 @@ chrome.tabs.onUpdated.addListener(function(tab) {
     allFrames: false // When true, this injects script into iframes in the page and doesn't work before 4.0.266.0. We actually don't want this here.
   });
 });
+
+chrome.tabs.onCreated.addListener(function(tab) {
+  chrome.tabs.executeScript(tab.id, { 
+    file: 'contentscript_imdb.js', 
+    allFrames: false 
+  });
+});
+
 // // IMPORTANT!!!
 // // THIS IS HOW WE CAN PROGRAMMATICALLY ADD CONTENT SCRIPTS TO PAGES
 // // WILL NEED TO DO THIS FOR IMDB ETC
