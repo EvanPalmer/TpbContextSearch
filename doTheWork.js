@@ -10,6 +10,9 @@
 // How to add preferences?? Like, prefer HQ, prefer most recent, exclude XXX, 
 // It would be cool if I could rename it, so it downloaded with the name of the movie and the year etc
 // add an options page - so we can remove XXX content
+// Convert background page to event page 
+//      in manifest: background persistent = false
+//      http://developer.chrome.com/extensions/event_pages.html
 
 function genericOnClick(searchText) {
 	var searchUrl = 'http://thepiratebay.se/search/' + encodeURIComponent(searchText) + '/0/7/0'
@@ -84,11 +87,15 @@ chrome.extension.onMessage.addListener(
     }
 );
 
+debugger;
+
 chrome.tabs.onUpdated.addListener(function(tab) {
   chrome.tabs.executeScript(tab.id, { // defaults to the current tab
     file: 'contentscript_imdb.js', // script to inject into page and run in sandbox
     allFrames: false // When true, this injects script into iframes in the page and doesn't work before 4.0.266.0. We actually don't want this here.
-  });
+    // url: [{hostSuffix: 'google.com'},
+    //       {hostSuffix: 'google.com.au'}]}
+        });
 });
 
 chrome.tabs.onCreated.addListener(function(tab) {
@@ -132,9 +139,4 @@ chrome.tabs.onCreated.addListener(function(tab) {
 // // });
 
 
-
-
-chrome.tabs.onCreated.addListener(function(tab) {
-	//console.log('tab created');
-});
 
